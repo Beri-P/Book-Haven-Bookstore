@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us – Book Haven</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Book Haven</a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="about.html" class="active">About Us</a></li>
+          <li><a href="community.html">Community</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      <button id="cart-btn" class="cart-btn" aria-label="View cart">
+        🛒 <span id="cart-count">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="container about-content">
+    <h1>About Book Haven</h1>
+    <section class="store-info">
+      <p>Welcome to Book Haven, your local independent bookstore in the heart of town. We curate the best new releases, beloved classics, and niche genres to delight every reader.</p>
+      <ul>
+        <li><strong>Address:</strong> 245 Maple Avenue, Portland, OR 97205</li>
+        <li><strong>Hours:</strong> Mon–Sat: 9 AM – 7 PM; Sun: 11 AM – 5 PM</li>
+        <li><strong>Contact:</strong> +1 503-555-0198 | info@bookhaven.com</li>
+      </ul>
+    </section>
+
+    <section class="feedback-form">
+      <h2>Feedback & Custom Orders</h2>
+      <form id="feedback-form">
+        <div class="form-group">
+          <label for="cust-name">Name:</label>
+          <input type="text" id="cust-name" name="name" required />
+        </div>
+        <div class="form-group">
+          <label for="cust-email">Email:</label>
+          <input type="email" id="cust-email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="cust-details">Order Details / Feedback:</label>
+          <textarea id="cust-details" name="details" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn">Submit</button>
+      </form>
+      <div id="feedback-confirm" class="feedback-confirm hidden">
+        <p>Thank you! Your submission has been saved.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <!-- Contact Info Column -->
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <p>245 Maple Avenue<br>Portland, OR 97205</p>
+                <p>Phone: (1) 503-555-0198</p>
+                <p>Email: info@bookhaven.coms</p>
+            </div>
+
+            <!-- Quick Links Column -->
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <a href="about.html">About Us</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="community.html">Community</a>
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
+
+            <!-- Newsletter Subscription -->
+            <div class="newsletter-column">
+                <h3>Subscribe</h3>
+                <form id="subscribe-form">
+                    <input type="email" placeholder="Your email" required />
+                    <button type="submit">Join Newsletter</button>
+                </form>
+                <div id="subscribe-confirm" class="hidden">
+                    <p>Thanks for subscribing!</p>
+                </div>
+            </div>
+
+            <!-- Social Media Column -->
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <div class="social-placeholder">📘 Facebook</div>
+                <div class="social-placeholder">📷 Instagram</div>
+                <div class="social-placeholder">🐦 Twitter</div>
+            </div>
+        </div>
+    </footer>
+
+  <!-- CART MODAL -->
+<div id="cart-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 id="cart-title">Your Cart</h2>
+      <button id="cart-close" class="modal-close" aria-label="Close cart">×</button>
+    </div>
+    
+    <div class="modal-body">
+      <div id="cart-view">
+        <ul id="cart-items" class="cart-items">
+          <!-- JS to inject cart items -->
+        </ul>
+        <p id="cart-total" class="cart-total">Total: $0</p>
+        <div class="cart-actions">
+          <button id="cart-clear" class="btn btn-secondary">Clear Cart</button>
+          <button id="cart-checkout" class="btn btn-primary">Checkout</button>
+        </div>
+      </div>
+      
+      <div id="checkout-view" class="checkout-form">
+        <div class="order-summary">
+          <h3>Order Summary</h3>
+          <div id="order-items"></div>
+          <div class="summary-line">
+            <span>Subtotal:</span>
+            <span id="subtotal">$0</span>
+          </div>
+          <div class="summary-line">
+            <span>Shipping:</span>
+            <span>$5.99</span>
+          </div>
+          <div class="summary-line">
+            <span>Tax:</span>
+            <span id="tax">$0</span>
+          </div>
+          <div class="summary-line total">
+            <span>Total:</span>
+            <span id="final-total">$0</span>
+          </div>
+        </div>
+        
+        <form id="checkout-form">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" name="firstName" required>
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input type="text" id="lastName" name="lastName" required>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" id="address" name="address" required>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" id="city" name="city" required>
+            </div>
+            <div class="form-group">
+              <label for="zip">ZIP Code</label>
+              <input type="text" id="zip" name="zip" required>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="cardNumber">Card Number</label>
+            <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" required>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="expiry">Expiry Date</label>
+              <input type="text" id="expiry" name="expiry" placeholder="MM/YY" required>
+            </div>
+            <div class="form-group">
+              <label for="cvv">CVV</label>
+              <input type="text" id="cvv" name="cvv" placeholder="123" required>
+            </div>
+          </div>
+          
+          <div class="cart-actions">
+            <button type="button" id="back-to-cart" class="back-to-cart">← Back to Cart</button>
+            <button type="submit" class="btn btn-primary">Complete Order</button>
+          </div>
+        </form>
+      </div>
+
+        <div id="success-view" class="success-message">
+          <div class="success-icon">✅</div>
+          <h3>Order Confirmed!</h3>
+          <p>Thank you for your purchase. You'll receive a confirmation email shortly.</p>
+          <button class="btn btn-primary" onclick="closeCartModal()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

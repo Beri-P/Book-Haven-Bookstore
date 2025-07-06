@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery – Book Haven</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- HEADER (same as index.html) -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Book Haven</a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gallery.html" class="active">Gallery</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="community.html">Community</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      <button id="cart-btn" class="cart-btn" aria-label="View cart">
+        🛒 <span id="cart-count">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="container">
+    <h1 class="section-title">Our Collection</h1>
+
+    <!-- Filters & Search -->
+    <div class="filters-search">
+      <div class="filters-container">
+        <div class="filter-group">
+          <select id="category-filter" class="filter-select">
+            <option value="">All Categories</option>
+            <option value="fiction">Fiction</option>
+            <option value="nonfiction">Non-Fiction</option>
+            <option value="kids">Kids</option>
+            <option value="specialty">Specialty</option>
+          </select>
+          
+          <select id="price-filter" class="filter-select">
+            <option value="">All Prices</option>
+            <option value="0-500">Under $500</option>
+            <option value="500-1000">$500 - $1000</option>
+            <option value="1000-1500">$1000 - $1500</option>
+            <option value="1500-2000">$1500+</option>
+          </select>
+          
+          <select id="author-filter" class="filter-select">
+            <option value="">All Authors</option>
+            <option value="shakespeare">Shakespeare</option>
+            <option value="austen">Jane Austen</option>
+            <option value="dahl">Roald Dahl</option>
+            <option value="other">Other Authors</option>
+          </select>
+        </div>
+        
+        <div class="search-container">
+          <input type="text" id="search-input" class="search-input" placeholder="Search books by title...">
+          <span class="search-icon">🔍</span>
+        </div>
+      </div>
+      
+      <div id="active-filters" class="active-filters hidden">
+      </div>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div id="gallery-grid" class="gallery-grid">
+      <!-- Book Cards -->
+      <div class="book-card" data-id="1" data-cat="fiction" data-price="1200" data-promo="b2g1" data-author="shakespeare" data-title="Romeo and Juliet">
+        <img src="https://covers.openlibrary.org/b/isbn/9780743477116-L.jpg" alt="Book Title">
+        <h3>Romeo and Juliet</h3>
+        <p class="price">$ 1,200</p>
+        <button class="btn add-cart">Add to Cart</button>
+      </div>
+      <div class="book-card" data-id="2" data-cat="fiction" data-price="800" data-promo="b2g2" data-author="shakespeare" data-title="Hamlet">
+        <img src="https://covers.openlibrary.org/b/isbn/9780486272788-M.jpg" alt="Book Title">
+        <h3>Hamlet</h3>
+        <p class="price">$ 800</p>
+        <button class="btn add-cart">Add to Cart</button>
+      </div>
+      <div class="book-card" data-id="3" data-cat="fiction" data-price="910" data-promo="b2g3" data-author="shakespeare" data-title="The Merchant of Venice">
+        <img src="https://covers.openlibrary.org/b/isbn/9780486284927-L.jpg" alt="Book Title">
+        <h3>The Merchant of Venice</h3>
+        <p class="price">$ 910</p>
+        <button class="btn add-cart">Add to Cart</button>
+      </div>
+      <div class="book-card" data-id="4" data-cat="fiction" data-price="200" data-promo="b2g4" data-author="shakespeare" data-title="Macbeth">
+        <img src="https://covers.openlibrary.org/b/isbn/9780743477109-L.jpg" alt="Book Title">
+        <h3>Macbeth</h3>
+        <p class="price">$ 200</p>
+        <button class="btn add-cart">Add to Cart</button>
+      </div>
+      <div class="book-card" data-id="5" data-cat="fiction" data-price="1500" data-promo="b2g1" data-author="austen" data-title="Pride and Prejudice">
+        <img src="https://covers.openlibrary.org/b/isbn/0141439513-L.jpg" alt="Book Cover">
+        <h3>Pride and Prejudice</h3>
+        <p class="price">$ 1,500</p>
+        <button class="btn add-cart">Add to Cart</button>
+      </div>
+
+      <div class="book-card" data-id="6" data-cat="nonfiction" data-price="950" data-promo="b2g2" data-author="other" data-title="Sapiens: A Brief History of Humankind">
+        <img src="https://covers.openlibrary.org/b/isbn/0062316095-L.jpg" alt="Book Cover">
+        <h3>Sapiens: A Brief History of Humankind</h3>
+        <p class="price">$ 950</p>
+        <button class="btn add-cart">Add to Cart</button>
+      </div>
+
+      <div class="book-card" data-id="7" data-cat="kids" data-price="600" data-promo="b2g3" data-author="dahl" data-title="Charlie and the Chocolate Factory">
+        <img src="https://covers.openlibrary.org/b/isbn/0142410314-L.jpg" alt="Book Cover">
+        <h3>Charlie and the Chocolate Factory</h3>
+        <p class="price">$ 600</p>
+        <button class="btn add-cart">Add to Cart</button>
+      </div>
+
+      <div class="book-card" data-id="8" data-cat="specialty" data-price="1300" data-promo="b2g4" data-author="other" data-title="The Art of War">
+        <img src="https://covers.openlibrary.org/b/isbn/9780486425573-L.jpg" alt="Book Cover">
+        <h3>The Art of War</h3>
+        <p class="price">$ 1,300</p>
+        <button class="btn add-cart">Add to Cart</button>
+      </div>
+
+      <div class="book-card" data-id="9" data-cat="fiction" data-price="1100" data-promo="b2g1" data-author="other" data-title="To Kill a Mockingbird">
+        <img src="https://covers.openlibrary.org/b/isbn/0061120081-L.jpg" alt="Book Cover">
+        <h3>To Kill a Mockingbird</h3>
+        <p class="price">$ 1,100</p>
+        <button class="btn add-cart">Add to Cart</button>
+      </div>
+
+      <div class="book-card" data-id="10" data-cat="nonfiction" data-price="1200" data-promo="b2g2" data-author="other" data-title="Educated">
+        <img src="https://covers.openlibrary.org/b/isbn/0399590501-L.jpg" alt="Book Cover">
+        <h3>Educated</h3>
+        <p class="price">$ 1,200</p>
+        <button class="btn add-cart">Add to Cart</button>
+      </div>
+
+      <div class="book-card" data-id="11" data-cat="kids" data-price="500" data-promo="b2g3" data-author="dahl" data-title="Matilda">
+        <img src="https://covers.openlibrary.org/b/isbn/0142410373-L.jpg" alt="Book Cover">
+        <h3>Matilda</h3>
+        <p class="price">$ 500</p>
+        <button class="btn add-cart">Add to Cart</button>
+      </div>
+
+      <div class="book-card" data-id="12" data-cat="specialty" data-price="1600" data-promo="b2g4" data-author="other" data-title="Atomic Habits">
+        <img src="https://m.media-amazon.com/images/I/51-nXsSRfZL._SX331_BO1,204,203,200_.jpg" alt="Book Cover">
+        <h3>Atomic Habits</h3>
+        <p class="price">$ 1,600</p>
+        <button class="btn add-cart">Add to Cart</button>
+      </div>
+
+      <div class="book-card" data-id="13" data-cat="fiction" data-price="980" data-promo="b2g1" data-author="other" data-title="The Great Gatsby">
+        <img src="https://covers.openlibrary.org/b/isbn/0743273567-L.jpg" alt="Book Cover">
+        <h3>The Great Gatsby</h3>
+        <p class="price">$ 980</p>
+        <button class="btn add-cart">Add to Cart</button>
+      </div>
+
+      <div class="book-card" data-id="14" data-cat="nonfiction" data-price="890" data-promo="b2g2" data-author="other" data-title="Thinking, Fast and Slow">
+        <img src="https://covers.openlibrary.org/b/isbn/9780374533557-L.jpg" alt="Book Cover">
+        <h3>Thinking, Fast and Slow</h3>
+        <p class="price">$ 890</p>
+        <button class="btn add-cart">Add to Cart</button>
+      </div>
+    </div>
+    
+    <div id="no-results" class="no-results hidden">
+      <p>No books found matching your criteria. Try adjusting your filters or search terms.</p>
+    </div>
+    
+    <div class="load-more-container">
+      <button id="load-more" class="btn">Load More</button>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <!-- Contact Info Column -->
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <p>245 Maple Avenue<br>Portland, OR 97205</p>
+                <p>Phone: (1) 503-555-0198</p>
+                <p>Email: info@bookhaven.coms</p>
+            </div>
+
+            <!-- Quick Links Column -->
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <a href="about.html">About Us</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="community.html">Community</a>
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
+
+            <!-- Newsletter Subscription -->
+            <div class="newsletter-column">
+                <h3>Subscribe</h3>
+                <form id="subscribe-form">
+                    <input type="email" placeholder="Your email" required />
+                    <button type="submit">Join Newsletter</button>
+                </form>
+                <div id="subscribe-confirm" class="hidden">
+                    <p>Thanks for subscribing!</p>
+                </div>
+            </div>
+
+            <!-- Social Media Column -->
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <div class="social-placeholder">📘 Facebook</div>
+                <div class="social-placeholder">📷 Instagram</div>
+                <div class="social-placeholder">🐦 Twitter</div>
+            </div>
+        </div>
+    </footer>
+
+  <!-- CART MODAL -->
+<div id="cart-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 id="cart-title">Your Cart</h2>
+      <button id="cart-close" class="modal-close" aria-label="Close cart">×</button>
+    </div>
+    
+    <div class="modal-body">
+      <div id="cart-view">
+        <ul id="cart-items" class="cart-items">
+          <!-- JS to inject cart items -->
+        </ul>
+        <p id="cart-total" class="cart-total">Total: $0</p>
+        <div class="cart-actions">
+          <button id="cart-clear" class="btn btn-secondary">Clear Cart</button>
+          <button id="cart-checkout" class="btn btn-primary">Checkout</button>
+        </div>
+      </div>
+      
+      <div id="checkout-view" class="checkout-form">
+        <div class="order-summary">
+          <h3>Order Summary</h3>
+          <div id="order-items"></div>
+          <div class="summary-line">
+            <span>Subtotal:</span>
+            <span id="subtotal">$0</span>
+          </div>
+          <div class="summary-line">
+            <span>Shipping:</span>
+            <span>$5.99</span>
+          </div>
+          <div class="summary-line">
+            <span>Tax:</span>
+            <span id="tax">$0</span>
+          </div>
+          <div class="summary-line total">
+            <span>Total:</span>
+            <span id="final-total">$0</span>
+          </div>
+        </div>
+        
+        <form id="checkout-form">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" name="firstName" required>
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input type="text" id="lastName" name="lastName" required>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" id="address" name="address" required>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" id="city" name="city" required>
+            </div>
+            <div class="form-group">
+              <label for="zip">ZIP Code</label>
+              <input type="text" id="zip" name="zip" required>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="cardNumber">Card Number</label>
+            <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" required>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="expiry">Expiry Date</label>
+              <input type="text" id="expiry" name="expiry" placeholder="MM/YY" required>
+            </div>
+            <div class="form-group">
+              <label for="cvv">CVV</label>
+              <input type="text" id="cvv" name="cvv" placeholder="123" required>
+            </div>
+          </div>
+          
+          <div class="cart-actions">
+            <button type="button" id="back-to-cart" class="back-to-cart">← Back to Cart</button>
+            <button type="submit" class="btn btn-primary">Complete Order</button>
+          </div>
+        </form>
+      </div>
+
+        <div id="success-view" class="success-message">
+          <div class="success-icon">✅</div>
+          <h3>Order Confirmed!</h3>
+          <p>Thank you for your purchase. You'll receive a confirmation email shortly.</p>
+          <button class="btn btn-primary" onclick="closeCartModal()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

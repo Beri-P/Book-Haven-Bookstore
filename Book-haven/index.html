@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book Haven Bookstore</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Book Haven</a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="community.html">Community</a></li>
+        </ul>
+      </nav>
+
+      <button id="cart-btn" class="cart-btn" aria-label="View cart">
+        🛒 <span id="cart-count">0</span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <!-- Hero carousel -->
+    <section id="hero-carousel" class="hero">
+  <div class="carousel-container container">
+    <button class="carousel-btn prev" aria-label="Previous slide">‹</button>
+    <div class="carousel-slides">
+      <div class="slide active">
+        <img src="https://covers.openlibrary.org/b/isbn/9780486272788-M.jpg" alt="Featured Book 1" />
+        <div class="slide-caption">
+          <h2>Featured Title One: Hamlet</h2>
+          <p>Short blurb about this bestseller.</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="https://m.media-amazon.com/images/I/51-nXsSRfZL._SX331_BO1,204,203,200_.jpg" alt="Featured Book 2" />
+        <div class="slide-caption">
+          <h2>Featured Title Two: Atomic Habits</h2>
+          <p>Another engaging blurb here.</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="https://covers.openlibrary.org/b/isbn/9780486425573-L.jpg" alt="Featured Book 3" />
+        <div class="slide-caption">
+          <h2>Featured Title Three: The Art of War</h2>
+          <p>Yet another bookstore highlight.</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-btn next" aria-label="Next slide">›</button>
+    <div class="carousel-dots">
+      <button class="dot active" data-index="0"></button>
+      <button class="dot" data-index="1"></button>
+      <button class="dot" data-index="2"></button>
+    </div>
+  </div>
+</section>
+
+    <!-- Promotions -->
+    <section id="promotions" class="promotions">
+  <div class="container promotions-inner">
+    <div class="promo">
+      <h3>Buy 2, Get 1 Free</h3>
+      <p>Mix & match any three paperbacks.</p>
+      <a href="gallery.html?promo=b2g1" class="btn">Shop Now</a>
+    </div>
+    <div class="promo">
+      <h3>20% Off Classics</h3>
+      <p>Rediscover the greats at a great price.</p>
+      <a href="gallery.html?promo=classics" class="btn">Explore</a>
+    </div>
+    <div class="promo">
+      <h3>Free Bookmark</h3>
+      <p>With every order over $ 1,000.</p>
+      <a href="gallery.html?promo=bookmark" class="btn">See Details</a>
+    </div>
+  </div>
+    </section>
+
+    <!-- Categories Section -->
+<section id="categories" class="categories container">
+  <h2 class="section-title">Browse by Category</h2>
+  <div class="categories-grid">
+    <a href="gallery.html?cat=fiction" class="category-card">
+      <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=60" alt="Fiction Books" />
+      <div class="card-overlay">
+        <h3>Fiction</h3>
+      </div>
+    </a>
+    <a href="gallery.html?cat=nonfiction" class="category-card">
+      <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=600&q=60"
+       alt="Non‑Fiction Books" />
+      <div class="card-overlay">
+        <h3>Non‑Fiction</h3>
+      </div>
+    </a>
+    <a href="gallery.html?cat=kids" class="category-card">
+      <img src="https://images.unsplash.com/photo-1509023464722-18d996393ca8?auto=format&fit=crop&w=600&q=60"
+       alt="Kids Books" />
+      <div class="card-overlay">
+        <h3>Kids</h3>
+      </div>
+    </a>
+    <a href="gallery.html?cat=specialty" class="category-card">
+      <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=600&q=60" alt="Specialty Genres" />
+      <div class="card-overlay">
+        <h3>Specialty</h3>
+      </div>
+    </a>
+  </div>
+</section>
+
+    <!-- Why Shop Local? Perks Section -->
+<section id="local-benefits" class="benefits">
+  <div class="container">
+    <h2 class="section-title">Why Shop Local?</h2>
+    <div class="benefit-card">
+      <img src="assets/icons/community.svg" alt="Community Icon" />
+      <h3>Support Community</h3>
+      <p>Your purchases fund local events & book clubs.</p>
+    </div>
+    <div class="benefit-card">
+      <img src="assets/icons/recommendation.svg" alt="Recommendation Icon" />
+      <h3>Personal Touch</h3>
+      <p>Get book picks tailored to your tastes.</p>
+    </div>
+    <div class="benefit-card">
+      <img src="assets/icons/environment.svg" alt="Environment Icon" />
+      <h3>Eco-Friendly</h3>
+      <p>Reduced shipping footprint & less packaging.</p>
+    </div>
+    <div class="benefit-card">
+      <img src="assets/icons/events.svg" alt="Events Icon" />
+      <h3>Exclusive Events</h3>
+      <p>Author signings, readings, and workshops.</p>
+    </div>
+  </div>
+</section>
+  </main>
+
+  <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <!-- Contact Info Column -->
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <p>245 Maple Avenue<br>Portland, OR 97205</p>
+                <p>Phone: (555) 123-4567</p>
+                <p>Email: info@yourbookstore.com</p>
+            </div>
+
+            <!-- Quick Links Column -->
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <a href="about.html">About Us</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="community.html">Community</a>
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
+
+            <!-- Newsletter Subscription -->
+            <div class="newsletter-column">
+                <h3>Subscribe</h3>
+                <form id="subscribe-form">
+                    <input type="email" placeholder="Your email" required />
+                    <button type="submit">Join Newsletter</button>
+                </form>
+                <div id="subscribe-confirm" class="hidden">
+                    <p>Thanks for subscribing!</p>
+                </div>
+            </div>
+
+            <!-- Social Media Column -->
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <div class="social-placeholder">📘 Facebook</div>
+                <div class="social-placeholder">📷 Instagram</div>
+                <div class="social-placeholder">🐦 Twitter</div>
+            </div>
+        </div>
+    </footer>
+
+  <!-- CART MODAL -->
+<div id="cart-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 id="cart-title">Your Cart</h2>
+      <button id="cart-close" class="modal-close" aria-label="Close cart">×</button>
+    </div>
+    
+    <div class="modal-body">
+      <div id="cart-view">
+        <ul id="cart-items" class="cart-items">
+          <!-- JS to inject cart items -->
+        </ul>
+        <p id="cart-total" class="cart-total">Total: $0</p>
+        <div class="cart-actions">
+          <button id="cart-clear" class="btn btn-secondary">Clear Cart</button>
+          <button id="cart-checkout" class="btn btn-primary">Checkout</button>
+        </div>
+      </div>
+      
+      <div id="checkout-view" class="checkout-form">
+        <div class="order-summary">
+          <h3>Order Summary</h3>
+          <div id="order-items"></div>
+          <div class="summary-line">
+            <span>Subtotal:</span>
+            <span id="subtotal">$0</span>
+          </div>
+          <div class="summary-line">
+            <span>Shipping:</span>
+            <span>$5.99</span>
+          </div>
+          <div class="summary-line">
+            <span>Tax:</span>
+            <span id="tax">$0</span>
+          </div>
+          <div class="summary-line total">
+            <span>Total:</span>
+            <span id="final-total">$0</span>
+          </div>
+        </div>
+        
+        <form id="checkout-form">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" name="firstName" required>
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input type="text" id="lastName" name="lastName" required>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" id="address" name="address" required>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" id="city" name="city" required>
+            </div>
+            <div class="form-group">
+              <label for="zip">ZIP Code</label>
+              <input type="text" id="zip" name="zip" required>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="cardNumber">Card Number</label>
+            <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" required>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="expiry">Expiry Date</label>
+              <input type="text" id="expiry" name="expiry" placeholder="MM/YY" required>
+            </div>
+            <div class="form-group">
+              <label for="cvv">CVV</label>
+              <input type="text" id="cvv" name="cvv" placeholder="123" required>
+            </div>
+          </div>
+          
+          <div class="cart-actions">
+            <button type="button" id="back-to-cart" class="back-to-cart">← Back to Cart</button>
+            <button type="submit" class="btn btn-primary">Complete Order</button>
+          </div>
+        </form>
+      </div>
+
+        <div id="success-view" class="success-message">
+          <div class="success-icon">✅</div>
+          <h3>Order Confirmed!</h3>
+          <p>Thank you for your purchase. You'll receive a confirmation email shortly.</p>
+          <button class="btn btn-primary" onclick="closeCartModal()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
