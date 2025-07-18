@@ -51,17 +51,17 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       
       initEventListeners() {
-        this.categoryFilter.addEventListener('change', () => this.applyFilters());
-        this.priceFilter.addEventListener('change', () => this.applyFilters());
-        this.authorFilter.addEventListener('change', () => this.applyFilters());
-        this.searchInput.addEventListener('input', () => this.applyFilters());
+        if (this.categoryFilter) this.categoryFilter.addEventListener('change', () => this.applyFilters());
+        if (this.priceFilter) this.priceFilter.addEventListener('change', () => this.applyFilters());
+        if (this.authorFilter) this.authorFilter.addEventListener('change', () => this.applyFilters());
+        if (this.searchInput) this.searchInput.addEventListener('input', () => this.applyFilters());
       }
       
       applyFilters() {
-        const category = this.categoryFilter.value;
-        const priceRange = this.priceFilter.value;
-        const author = this.authorFilter.value;
-        const searchTerm = this.searchInput.value.toLowerCase();
+        const category = this.categoryFilter?.value || '';
+        const priceRange = this.priceFilter?.value || '';
+        const author = this.authorFilter?.value || '';
+        const searchTerm = this.searchInput?.value.toLowerCase() || '';
         
         let visibleCount = 0;
         
@@ -112,9 +112,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       
       updateActiveFilters() {
+        if (!this.activeFiltersContainer) return;
+        
         const activeFilters = [];
         
-        if (this.categoryFilter.value) {
+        if (this.categoryFilter?.value) {
           activeFilters.push({
             type: 'category',
             value: this.categoryFilter.value,
@@ -122,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
           });
         }
         
-        if (this.priceFilter.value) {
+        if (this.priceFilter?.value) {
           activeFilters.push({
             type: 'price',
             value: this.priceFilter.value,
@@ -130,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
           });
         }
         
-        if (this.authorFilter.value) {
+        if (this.authorFilter?.value) {
           activeFilters.push({
             type: 'author',
             value: this.authorFilter.value,
@@ -138,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
           });
         }
         
-        if (this.searchInput.value) {
+        if (this.searchInput?.value) {
           activeFilters.push({
             type: 'search',
             value: this.searchInput.value,
@@ -150,6 +152,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       
       renderActiveFilters(filters) {
+        if (!this.activeFiltersContainer) return;
+        
         if (filters.length === 0) {
           this.activeFiltersContainer.classList.add('hidden');
           return;
@@ -179,30 +183,32 @@ document.addEventListener('DOMContentLoaded', () => {
       removeFilter(type) {
         switch(type) {
           case 'category':
-            this.categoryFilter.value = '';
+            if (this.categoryFilter) this.categoryFilter.value = '';
             break;
           case 'price':
-            this.priceFilter.value = '';
+            if (this.priceFilter) this.priceFilter.value = '';
             break;
           case 'author':
-            this.authorFilter.value = '';
+            if (this.authorFilter) this.authorFilter.value = '';
             break;
           case 'search':
-            this.searchInput.value = '';
+            if (this.searchInput) this.searchInput.value = '';
             break;
         }
         this.applyFilters();
       }
       
       clearAllFilters() {
-        this.categoryFilter.value = '';
-        this.priceFilter.value = '';
-        this.authorFilter.value = '';
-        this.searchInput.value = '';
+        if (this.categoryFilter) this.categoryFilter.value = '';
+        if (this.priceFilter) this.priceFilter.value = '';
+        if (this.authorFilter) this.authorFilter.value = '';
+        if (this.searchInput) this.searchInput.value = '';
         this.applyFilters();
       }
       
       toggleNoResults(show) {
+        if (!this.noResults || !this.galleryGrid) return;
+        
         if (show) {
           this.noResults.classList.remove('hidden');
           this.galleryGrid.style.display = 'none';
@@ -213,8 +219,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     
-    // Initialize filter functionality
-    const bookFilter = new BookFilter();
+    // Initialize filter functionality only if elements exist (gallery page)
+    if (document.getElementById('category-filter')) {
+      const bookFilter = new BookFilter();
+    }
 
 // CART & "ADD TO CART" - Fixed Implementation
 const cartBtn   = document.getElementById('cart-btn');
@@ -425,49 +433,57 @@ updateCartCount();
 
   // --- FOOTER SUBSCRIBE FORM ---
 // ✅ Newsletter subscribe form logic (no page reload)
-document.getElementById('subscribe-form').addEventListener('submit', function(e) {
-  e.preventDefault();
+const subscribeForm = document.getElementById('subscribe-form');
+if (subscribeForm) {
+  subscribeForm.addEventListener('submit', function(e) {
+    e.preventDefault();
 
-  // Optional: validate email here
-  const emailInput = this.querySelector('input[type="email"]');
-  const email = emailInput.value.trim();
-  if (!email) {
-    alert("Please enter a valid email.");
-    return;
-  }
+    // Optional: validate email here
+    const emailInput = this.querySelector('input[type="email"]');
+    const email = emailInput.value.trim();
+    if (!email) {
+      alert("Please enter a valid email.");
+      return;
+    }
 
-  const confirmDiv = document.getElementById('subscribe-confirm');
-  confirmDiv.classList.remove('hidden');
-
-  setTimeout(() => confirmDiv.classList.add('hidden'), 3000);
-  this.reset();
-});
+    const confirmDiv = document.getElementById('subscribe-confirm');
+    if (confirmDiv) {
+      confirmDiv.classList.remove('hidden');
+      setTimeout(() => confirmDiv.classList.add('hidden'), 3000);
+    }
+    this.reset();
+  });
+}
 
   // ✅ Feedback form logic (stores in sessionStorage)
-document.getElementById('feedback-form').addEventListener('submit', function(e) {
-  e.preventDefault();
+const feedbackForm = document.getElementById('feedback-form');
+if (feedbackForm) {
+  feedbackForm.addEventListener('submit', function(e) {
+    e.preventDefault();
 
-  const name = document.getElementById('cust-name').value;
-  const email = document.getElementById('cust-email').value;
-  const details = document.getElementById('cust-details').value;
+    const name = document.getElementById('cust-name').value;
+    const email = document.getElementById('cust-email').value;
+    const details = document.getElementById('cust-details').value;
 
-  const feedbackData = {
-    name,
-    email,
-    details,
-    submittedAt: new Date().toISOString()
-  };
+    const feedbackData = {
+      name,
+      email,
+      details,
+      submittedAt: new Date().toISOString()
+    };
 
-  sessionStorage.setItem('contactFeedback', JSON.stringify(feedbackData));
+    sessionStorage.setItem('contactFeedback', JSON.stringify(feedbackData));
 
-  const confirmDiv = document.getElementById('feedback-confirm');
-  confirmDiv.classList.remove('hidden');
+    const confirmDiv = document.getElementById('feedback-confirm');
+    if (confirmDiv) {
+      confirmDiv.classList.remove('hidden');
+      setTimeout(() => confirmDiv.classList.add('hidden'), 3000);
+    }
+    this.reset();
+  });
+}
 
-  setTimeout(() => confirmDiv.classList.add('hidden'), 3000);
-  this.reset();
-});
-
-  // 5. GALLERY “LOAD MORE” & FILTER (page‐specific)
+  // 5. GALLERY "LOAD MORE" & FILTER (page‐specific)
   const loadMore = document.getElementById('load-more');
   if (loadMore && gallery) {
     loadMore.addEventListener('click', () => {
