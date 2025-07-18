@@ -424,44 +424,7 @@ updateCartCount();
 
 
   // --- FOOTER SUBSCRIBE FORM ---
-// Newsletter subscription functionality
-        document.getElementById('subscribe-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const confirmDiv = document.getElementById('subscribe-confirm');
-            confirmDiv.classList.remove('hidden');
-            
-            // Hide confirmation after 3 seconds
-            setTimeout(() => {
-                confirmDiv.classList.add('hidden');
-            }, 3000);
-            
-            // Reset form
-            this.reset();
-        });
-
-  // 4. FORM VALIDATION & HANDLING (feedback + subscribe)
-  function validateForm(form) {
-    let valid = true;
-    form.querySelectorAll('[required]').forEach(el => {
-      const errId = el.id + '-error';
-      let err = form.querySelector('#'+errId);
-      if (!err) {
-        err = document.createElement('div');
-        err.id = errId;
-        err.className = 'form-error';
-        el.insertAdjacentElement('afterend', err);
-      }
-      if (!el.checkValidity()) {
-        valid = false;
-        err.textContent = el.validationMessage;
-        el.setAttribute('aria-invalid','true');
-      } else {
-        err.textContent = '';
-        el.removeAttribute('aria-invalid');
-      }
-    });
-    return valid;
-  }
+// Newsletter subscription functionality AND Form Validation & Handling (feedback + subscribe)
   ['feedback-form', 'subscribe-form'].forEach(id => {
   const form = document.getElementById(id);
   if (!form) return;
@@ -469,8 +432,31 @@ updateCartCount();
   function handleSubmit(e) {
     e.preventDefault();
     if (!validateForm(form)) return;
-    form.removeEventListener('submit', handleSubmit);
-    form.submit();  // proceeds with native submission or custom logic
+
+    if (id === 'subscribe-form') {
+      const confirmDiv = document.getElementById('subscribe-confirm');
+      confirmDiv.classList.remove('hidden');
+      setTimeout(() => confirmDiv.classList.add('hidden'), 3000);
+      form.reset();
+    } else if (id === 'feedback-form') {
+      const name = document.getElementById('cust-name').value;
+      const email = document.getElementById('cust-email').value;
+      const details = document.getElementById('cust-details').value;
+
+      const feedbackData = {
+        name,
+        email,
+        details,
+        submittedAt: new Date().toISOString()
+      };
+
+      sessionStorage.setItem('contactFeedback', JSON.stringify(feedbackData));
+
+      const confirmDiv = document.getElementById('feedback-confirm');
+      confirmDiv.classList.remove('hidden');
+      setTimeout(() => confirmDiv.classList.add('hidden'), 3000);
+      form.reset();
+    }
   }
 
   form.addEventListener('submit', handleSubmit);
