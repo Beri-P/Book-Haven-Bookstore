@@ -424,42 +424,47 @@ updateCartCount();
 
 
   // --- FOOTER SUBSCRIBE FORM ---
-// Newsletter subscription functionality AND Form Validation & Handling (feedback + subscribe)
-  ['feedback-form', 'subscribe-form'].forEach(id => {
-  const form = document.getElementById(id);
-  if (!form) return;
+// ✅ Newsletter subscribe form logic (no page reload)
+document.getElementById('subscribe-form').addEventListener('submit', function(e) {
+  e.preventDefault();
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (!validateForm(form)) return;
-
-    if (id === 'subscribe-form') {
-      const confirmDiv = document.getElementById('subscribe-confirm');
-      confirmDiv.classList.remove('hidden');
-      setTimeout(() => confirmDiv.classList.add('hidden'), 3000);
-      form.reset();
-    } else if (id === 'feedback-form') {
-      const name = document.getElementById('cust-name').value;
-      const email = document.getElementById('cust-email').value;
-      const details = document.getElementById('cust-details').value;
-
-      const feedbackData = {
-        name,
-        email,
-        details,
-        submittedAt: new Date().toISOString()
-      };
-
-      sessionStorage.setItem('contactFeedback', JSON.stringify(feedbackData));
-
-      const confirmDiv = document.getElementById('feedback-confirm');
-      confirmDiv.classList.remove('hidden');
-      setTimeout(() => confirmDiv.classList.add('hidden'), 3000);
-      form.reset();
-    }
+  // Optional: validate email here
+  const emailInput = this.querySelector('input[type="email"]');
+  const email = emailInput.value.trim();
+  if (!email) {
+    alert("Please enter a valid email.");
+    return;
   }
 
-  form.addEventListener('submit', handleSubmit);
+  const confirmDiv = document.getElementById('subscribe-confirm');
+  confirmDiv.classList.remove('hidden');
+
+  setTimeout(() => confirmDiv.classList.add('hidden'), 3000);
+  this.reset();
+});
+
+  // ✅ Feedback form logic (stores in sessionStorage)
+document.getElementById('feedback-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById('cust-name').value;
+  const email = document.getElementById('cust-email').value;
+  const details = document.getElementById('cust-details').value;
+
+  const feedbackData = {
+    name,
+    email,
+    details,
+    submittedAt: new Date().toISOString()
+  };
+
+  sessionStorage.setItem('contactFeedback', JSON.stringify(feedbackData));
+
+  const confirmDiv = document.getElementById('feedback-confirm');
+  confirmDiv.classList.remove('hidden');
+
+  setTimeout(() => confirmDiv.classList.add('hidden'), 3000);
+  this.reset();
 });
 
   // 5. GALLERY “LOAD MORE” & FILTER (page‐specific)
